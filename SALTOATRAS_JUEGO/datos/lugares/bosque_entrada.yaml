@@ -1,0 +1,15 @@
+# Guion: SALTOATRAS_GUIONISTA/lugares/Bosque.md (la entrada)
+nombre: Entrada del bosque
+fondo: bosque-entrada
+al_llegar: bosque_llegar
+
+cosas:
+  - id: senora
+    nombre: Una señora sentada
+    zona: [180, 300, 80, 150]
+    hablar: senora
+
+  - id: camino
+    nombre: El bosque
+    zona: [450, 100, 400, 330]
+    nudo: bosque_entrar

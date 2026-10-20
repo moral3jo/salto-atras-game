@@ -1,0 +1,34 @@
+# Preguntas del panel. Aparecen con ~ posit("id") o ~ pensar("id") desde Ink
+# y se resuelven en Pensar: una respuesta y una prueba que la sostenga.
+#
+#   respuesta:   la buena; el id de una ficha (o una de las opciones)
+#   opciones:    si la respuesta es a elegir en vez de una ficha
+#   pruebas:     fichas que la sostienen; vale cualquiera
+#   conclusion:  lo que queda escrito en el panel al resolverla
+#   al_resolver: nudo de Ink que se lee al resolverla, si se está hablando con esa persona
+
+# ---- F1 ----
+
+quien_cerro:
+  pregunta: ¿Quién ha dejado cerrado el ayuntamiento?
+  respuesta: alcalde
+  pruebas: [cartel]
+  conclusion: "El alcalde. Su propia nota lo dice: atiende en su casa."
+  al_resolver: con_elena._cerro_bien
+
+donde_vive:
+  pregunta: ¿Dónde vive el alcalde?
+  respuesta: bosque
+  pruebas: [elena]
+  conclusion: En el bosque, según Elena.
+
+# Se resuelven en la caravana (por hacer): todavía no tienen pruebas.
+fraude:
+  pregunta: ¿Fraude?
+  opciones: [Sí, No]
+  respuesta: "No"
+
+alcalde_ajo:
+  pregunta: ¿El alcalde está en el ajo?
+  opciones: [Sí, No]
+  respuesta: "No"

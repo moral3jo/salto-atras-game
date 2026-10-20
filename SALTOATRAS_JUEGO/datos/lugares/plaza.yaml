@@ -1,0 +1,56 @@
+# Guion: SALTOATRAS_GUIONISTA/lugares/Plaza.md
+nombre: Plaza
+fondo: plaza
+al_llegar: plaza_llegar
+
+# Vida del fondo, por zonas (ver docs/FORMATO.md → vida). Coordenadas de la pantalla de 960×540.
+vida:
+  - tipo: luz          # el sol bajo entra por la izquierda
+    zona: [0, 0, 600, 420]
+  - tipo: polvo        # motas en esa luz
+    zona: [0, 120, 640, 340]
+  - tipo: agua         # la fuente
+    zona: [738, 339, 213, 190]
+  - tipo: viento       # el plátano de la izquierda
+    zona: [100, 140, 190, 270]
+  - tipo: viento       # el plátano de la derecha
+    zona: [655, 120, 185, 290]
+
+cosas:
+  - id: ayuntamiento
+    nombre: Ayuntamiento
+    zona: [286, 93, 359, 363]
+    nudo: plaza_ayuntamiento
+
+  - id: cartel
+    nombre: Nota en la puerta
+    zona: [525, 346, 50, 43]
+    imagen: nota-alcalde     # el papel pegado en la pared
+    sombra: false
+    nudo: plaza_cartel
+
+  - id: coche
+    nombre: Tu coche
+    zona: [-70, 404, 290, 161]   # sale por abajo a la izquierda: no se ve entero
+    imagen: coche           # la figura se ve de pie sobre la zona (cabe sin deformarse)
+    nudo: plaza_coche
+
+  - id: policia
+    nombre: Un municipal
+    zona: [238, 338, 59, 169]
+    imagen: policia
+    hablar: policia
+    si: policia_en_plaza
+
+  - id: al_hostal
+    nombre: Ir al hostal
+    zona: [643, 254, 95, 203]   # la calle del hostal
+    ir: hostal
+    si: sabe_hostal
+
+  - id: carlos
+    nombre: Un chico con un libro
+    zona: [665, 343, 62, 143]
+    imagen: carlos
+    hablar: carlos
+    si: carlos_en_plaza

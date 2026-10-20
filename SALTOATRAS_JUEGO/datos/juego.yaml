@@ -1,0 +1,51 @@
+# Lo general del juego. Ver docs/FORMATO.md.
+
+titulo: SALTO ATRÁS
+
+# Aviso de contenido en la portada (guion: guionista.md → N3 · Aviso).
+aviso: No se recomienda a personas sensibles.
+
+# Quién habla. Una línea de Ink "Nombre: texto" (o "Nombre (pose): texto") con
+# uno de estos nombres es alguien hablando; cualquier otra línea es un
+# pensamiento de Martínez, a boli. Así "Cobertura: ninguna." es un pensamiento.
+protagonista: Martínez
+voces: [Policía, Carlos, Chico, Elena, Señora]
+
+# Lugar donde empieza una partida nueva (un fichero de datos/lugares/).
+inicio: plaza
+
+# La entrada de una partida nueva: fundido a negro, el texto y, si existe,
+# el sonido (SALTOATRAS_ARTE/sonido/<sonido>.mp3|ogg|wav). Sin sonido, en silencio.
+llegada:
+  texto: Medina de la Frontera
+  sonido: llegada-coche
+
+# Cómo se ve el juego en momentos de la historia (la película antigua, el temblor…).
+# La historia los pide con `~ ambiente("tenso")` y vuelve a lo normal con
+# `~ ambiente("")`. Cada uno solo cambia lo que nombra (peli.*, vida.*, estilo.*: los
+# mismos ids del panel de debug F2); el resto sigue como esté. "tiempo" = segundos
+# que tarda en llegar (2 por defecto). Quien ponga "Movimiento: Quieto" en la pausa
+# no verá temblar nada ni aquí.
+ambientes:
+  tenso:
+    tiempo: 3
+    valores:
+      peli.grano: 0.35
+      peli.fps: 9
+      peli.parpadeo: 0.14
+      peli.rayas: 0.8
+      peli.balanceo: 1
+      peli.vineta: 0.45
+      peli.respiracion: 0.6
+  pesadilla:
+    tiempo: 1.5
+    valores:
+      peli.grano: 0.6
+      peli.fps: 7
+      peli.parpadeo: 0.22
+      peli.rayas: 1
+      peli.polvo: 1
+      peli.balanceo: 2
+      peli.vineta: 0.7
+      peli.respiracion: 1
+      estilo.saturacion: -0.6

@@ -1,0 +1,26 @@
+# Guion: SALTOATRAS_GUIONISTA/lugares/Hostal.md
+nombre: Hostal
+fondo: hostal
+al_llegar: hostal_llegar
+
+cosas:
+  - id: telefono
+    nombre: El teléfono
+    zona: [585, 260, 90, 60]
+    hablar: elena
+
+  - id: llaves
+    nombre: Casillero de llaves
+    zona: [255, 150, 195, 90]
+    nudo: hostal_llaves
+
+  - id: al_bosque
+    nombre: Ir al bosque
+    zona: [875, 60, 85, 420]
+    ir: bosque_entrada
+    si: sabe_bosque
+
+  - id: a_la_plaza
+    nombre: Volver a la plaza
+    zona: [0, 70, 115, 400]
+    ir: plaza

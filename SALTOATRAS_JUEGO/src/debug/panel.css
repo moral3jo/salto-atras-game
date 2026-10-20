@@ -1,0 +1,95 @@
+#debug {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 380px;
+  box-sizing: border-box;
+  z-index: 9999;
+  overflow-y: auto;
+  padding: 10px 12px 40px;
+  background: #15130f;
+  color: #e9e1cf;
+  border-left: 1px solid #3a3326;
+  font: 12px/1.4 Consolas, "Courier New", monospace;
+}
+
+#debug header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+#debug header strong { font-size: 14px; letter-spacing: 1px; }
+#debug .coord { margin-left: auto; color: #a9c7ff; }
+
+#debug button {
+  font: inherit;
+  color: #e9e1cf;
+  background: #2b261c;
+  border: 1px solid #4b4331;
+  border-radius: 3px;
+  padding: 3px 8px;
+  cursor: pointer;
+}
+#debug button:hover { background: #3a3324; }
+#debug button.activo { background: #6b4a1d; border-color: #e0a95b; }
+#debug button.ok { background: #264a2c; border-color: #5bb06b; }
+#debug button.cerrar { padding: 0 8px; font-size: 16px; }
+
+#debug .barra,
+#debug .botones { display: flex; flex-wrap: wrap; gap: 6px; margin: 6px 0; }
+
+#debug details { margin: 8px 0; border-top: 1px solid #2f2a1f; padding-top: 6px; }
+#debug summary { cursor: pointer; color: #e0a95b; font-weight: bold; margin-bottom: 4px; }
+#debug .nota { color: #8c8470; margin: 4px 0; font-size: 11px; }
+
+#debug .fila { padding: 4px 0; border-bottom: 1px solid #231f17; }
+#debug .fila label { display: flex; flex-direction: column; }
+#debug .fila small { color: #6f6755; font-size: 10px; }
+#debug .fila.cambiado label { color: #a9c7ff; }
+#debug .fila.cambiado small { color: #7f93b8; }
+#debug .mando { display: flex; align-items: center; gap: 6px; margin-top: 2px; }
+#debug input[type="range"] { flex: 1; min-width: 0; accent-color: #e0a95b; }
+#debug .numero { width: 68px; }
+#debug input[type="number"],
+#debug input[type="text"] {
+  font: inherit;
+  color: #e9e1cf;
+  background: #0f0d0a;
+  border: 1px solid #3f3829;
+  border-radius: 3px;
+  padding: 2px 4px;
+  box-sizing: border-box;
+}
+#debug .unidad { width: 44px; color: #8c8470; font-size: 10px; }
+
+#debug .cuadro { display: flex; align-items: center; gap: 6px; margin: 4px 0; }
+#debug .cuadro input { flex: 1; min-width: 0; }
+#debug .cuadro code { color: #a9c7ff; }
+#debug .cuadro em { color: #8c8470; font-style: normal; font-size: 10px; }
+
+/* La capa sobre el lienzo: muestra los cuadrados y recoge el arrastre. */
+#debug-capa {
+  position: fixed;
+  z-index: 9998;
+  pointer-events: none;
+}
+#debug-capa.dibujando { pointer-events: auto; cursor: crosshair; background: rgba(224, 169, 91, 0.06); }
+#debug-capa .cuadro-lienzo,
+#debug-capa .banda {
+  position: absolute;
+  box-sizing: border-box;
+  border: 1.5px dashed #e0a95b;
+  background: rgba(224, 169, 91, 0.12);
+  color: #ffd9a0;
+  font: 11px/1.2 Consolas, "Courier New", monospace;
+  padding: 1px 3px;
+  overflow: hidden;
+  pointer-events: none;
+}
+#debug-capa .banda { background: rgba(169, 199, 255, 0.15); border-color: #a9c7ff; }
+
+#debug .pestanas { display: flex; gap: 4px; margin: 8px 0 0; border-bottom: 1px solid #3a3326; }
+#debug .pestanas button { border-radius: 3px 3px 0 0; padding: 4px 14px; }
+#debug [hidden] { display: none; }

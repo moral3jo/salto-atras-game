@@ -1,0 +1,152 @@
+# Fichas: todo lo que Martínez sabe. Están en el expediente y son los temas
+# de conversación (pinchar una es preguntar por ella). Ver docs/FORMATO.md.
+#
+#   tipo: persona | sitio | cosa | evento
+#   icono: dibujo de la ficha (SALTOATRAS_ARTE/normalizado/<icono>.png)
+#   cuerpo: solo personas; cuerpo grande al hablar (<cuerpo>-<pose>.png)
+#   panel: true si va clavada en el panel (la pared) al conseguirla
+#   de_cerca: cómo se ve de cerca con ~ ver("id") en Ink
+#     texto: lo que pone el papel
+#     imagen: el papel (SALTOATRAS_ARTE/normalizado/<imagen>.png); si no, uno dibujado
+#     letra: mano (por defecto) | maquina
+#       Lo que va entre [[ ]] sale a mano (un impreso relleno a bolígrafo).
+#
+# Una persona entra sola en el expediente la primera vez que se habla con ella.
+
+# ---- Personas ----
+
+policia:
+  tipo: persona
+  icono: icono-policia
+  titulo: Policía
+  cuerpo: policia
+  texto: |
+    Policía local. Borde. Multa primero y pregunta después.
+
+carlos:
+  tipo: persona
+  titulo: Carlos, el chico del libro
+  cuerpo: carlos
+  texto: |
+    Un chaval de unos quince años, siempre con un libro.
+    Me dijo lo del teléfono del hostal.
+
+elena:
+  tipo: persona
+  titulo: Elena
+  texto: |
+    Mi jefa en el ministerio. Me ha mandado aquí.
+
+alcalde:
+  tipo: persona
+  icono: icono-alcalde
+  titulo: El alcalde
+  cuerpo: alcalde
+  texto: |
+    Ramón Castro. Firma las solicitudes del centro nuevo.
+    "Venid a verme a casa", dice su cartel.
+
+senora:
+  tipo: persona
+  titulo: La señora del bosque
+  texto: |
+    Sentada a la entrada del bosque. Dice que si entro, me pierdo.
+
+# ---- Sitios ----
+
+ayuntamiento:
+  tipo: sitio
+  icono: icono-ayuntamiento
+  titulo: El ayuntamiento
+  texto: |
+    Cerrado a media tarde de un día de diario.
+
+hostal:
+  tipo: sitio
+  icono: icono-hostal
+  titulo: El hostal
+  texto: |
+    Donde duermo. Tiene el único teléfono que funciona.
+
+bosque:
+  tipo: sitio
+  icono: icono-bosque
+  titulo: El bosque
+  texto: |
+    Según Elena, el alcalde vive ahí.
+
+# ---- Cosas ----
+
+cartel:
+  tipo: cosa
+  icono: nota-alcalde
+  titulo: La nota del alcalde
+  texto: |
+    En la puerta del ayuntamiento:
+    "Para cualquier problema, venid a verme a casa. El alcalde."
+  de_cerca:
+    imagen: nota-alcalde
+    texto: |
+      Para cualquier problema,
+      venid a verme a casa.
+
+      El alcalde
+
+multa:
+  tipo: cosa
+  icono: multa-2
+  titulo: La multa
+  panel: true
+  texto: |
+    Boletín de denuncia. Policía Local de Medina.
+    Estacionar en lugar prohibido. Plaza Mayor.
+
+    Agente: Ortega (firmado a mano).
+  de_cerca:
+    imagen: multa-2
+    letra: maquina
+    texto: |
+      POLICÍA LOCAL DE MEDINA
+      Boletín de denuncia
+
+      Infracción: [[estacionar en lugar prohibido]]
+      Lugar: [[Plaza Mayor]]
+
+      Agente: [[Ortega]]
+
+solicitudes:
+  tipo: cosa
+  titulo: Las solicitudes
+  texto: |
+    Solicitudes de plaza para el centro de atención a jóvenes con
+    dependencia cognitiva. Ayuntamiento de Medina.
+
+    · Daniel Ortega Ruiz
+    · Álvaro Gil Benítez
+    · Pablo Castro ___
+  de_cerca:
+    letra: maquina
+    texto: |
+      SOLICITUDES DE PLAZA
+      Centro de atención a jóvenes con dependencia cognitiva
+      Ayuntamiento de Medina
+
+      1. [[Daniel Ortega Ruiz]]
+      2. [[Álvaro Gil Benítez]]
+      3. [[Pablo Castro]] ___
+
+flores_azules:
+  tipo: cosa
+  titulo: Las flores azules
+  texto: |
+    El hijo del alcalde baja cada tarde con un ramo de flores azules.
+    Siempre azules. (Lo dijo la señora del bosque.)
+
+# ---- Eventos ----
+
+sin_cobertura:
+  tipo: evento
+  icono: icono-sin-cobertura
+  titulo: Sin cobertura
+  texto: |
+    En Medina el móvil no tiene ni una raya.
