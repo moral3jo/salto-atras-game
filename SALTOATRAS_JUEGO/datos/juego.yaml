@@ -20,12 +20,12 @@ llegada:
   texto: Medina de la Frontera
   sonido: llegada-coche
 
-# Música (SALTOATRAS_ARTE/sonido/<pista>.mp3|ogg|wav, en cualquier subcarpeta). `portada` suena
-# en el menú; `juego`, en todos los lugares que no pidan otra con `musica:`. La historia puede
+# Música (SALTOATRAS_ARTE/sonido/<pista>.mp3|ogg|wav, en cualquier subcarpeta). Una pista o una
+# lista que se turna. `portada` suena en el menú; `juego`, en todos los lugares que no pidan otra con `musica:`. La historia puede
 # cambiarla con `~ musica("pista")`. Volumen: Pausa y F2 (audio.musica).
 musica:
-  portada: marea-baja
-  juego: marea-baja
+  portada: [marea-baja, marea-baja-2]
+  juego: [marea-baja, marea-baja-2]   # igual que la portada: así no se corta al empezar
 
 # Cómo se ve el juego en momentos de la historia (la película antigua, el temblor…).
 # La historia los pide con `~ ambiente("tenso")` y vuelve a lo normal con

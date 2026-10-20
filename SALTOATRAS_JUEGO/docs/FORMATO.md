@@ -398,5 +398,9 @@ nombran sin extensión). Una sola suena a la vez, en bucle y con fundido al camb
 - `musica:` en un lugar: otra pista solo ahí.
 - `~ musica("pista")` en Ink la cambia en cualquier momento; `~ musica("")` la calla.
 
-Pedir la pista que ya suena no la reinicia. El volumen está en la Pausa (Normal / Baja / Apagada)
+Con varias pistas (una lista en yaml, o `"a,b"` en Ink) se turnan: la siguiente entra mientras la actual acaba y, tras la última, vuelve la primera.
+Pedir lo que ya suena no lo reinicia. El volumen está en la Pausa (Normal / Baja / Apagada)
 y en F2 (`audio.musica`). Sin el fichero, silencio.
+
+**Normalizar:** las pistas se dejan a −20 LUFS (volumen medio) con `ffmpeg … loudnorm=I=-20:TP=-1.5`, para
+que ninguna suene más fuerte que otra. Los originales se guardan en `SALTOATRAS_ARTE/bruto/`.

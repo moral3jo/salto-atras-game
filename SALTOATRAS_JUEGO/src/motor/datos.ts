@@ -37,7 +37,7 @@ export interface Lugar {
   fondo?: string;
   al_llegar?: string;
   /** Pista de SALTOATRAS_ARTE/sonido que suena aquí (si no, la de `musica.juego` de juego.yaml). */
-  musica?: string;
+  musica?: string | string[];
   cosas: Cosa[];
   vida?: VidaZona[];
 }
@@ -93,7 +93,7 @@ export interface Datos {
   /** La entrada de una partida nueva: un texto en negro y, si hay, un sonido. */
   llegada?: { texto?: string; sonido?: string };
   /** Pistas de música: la de la portada y la de por defecto durante el juego. */
-  musica?: { portada?: string; juego?: string };
+  musica?: { portada?: string | string[]; juego?: string | string[] };
   lugares: Record<string, Lugar>;
   fichas: Record<string, Ficha>;
   posits: Record<string, Posit>;
