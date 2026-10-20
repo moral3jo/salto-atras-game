@@ -7,7 +7,8 @@
     "dev": "vite",
     "build": "tsc --noEmit && vite build",
     "preview": "vite preview",
-    "comprobar": "tsc --noEmit"
+    "comprobar": "tsc --noEmit",
+    "imagenes": "node scripts/imagenes-sin-usar.mjs"
   },
   "dependencies": {
     "@fontsource/caveat": "^5.3.0",

@@ -19,6 +19,11 @@ Todo el arte se genera con IA. No se pelea para que salga igual: se genera
   sobrescribe una imagen aquí, cambia en el juego: en desarrollo (`npx vite`) se
   recarga sola; para una versión empaquetada (`npm run build`) las imágenes
   se copian dentro, así que hay que volver a empaquetar.
+  Dentro de `juego/` se puede ordenar en subcarpetas (**máximo 2 niveles**, p. ej.
+  `juego/lugares/hostal.png` o `juego/ui/botones/boton-1.png`). El juego busca por el
+  **nombre del fichero**, no por la carpeta: mover una imagen no rompe nada, pero
+  **no puede haber dos con el mismo nombre** (el juego lo avisa en pantalla).
+  Para ver qué imágenes de `juego/` no usa nadie: `npm run imagenes` (desde `SALTOATRAS_JUEGO`).
 - `descartes/`: las versiones viejas. Cuando una imagen mejora, la anterior se
   copia aquí y la nueva ocupa su sitio en `juego/`.
 - `referencias/`: las imágenes que marcan luz, estilo y personajes.

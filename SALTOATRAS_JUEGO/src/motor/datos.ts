@@ -119,7 +119,7 @@ const inks = import.meta.glob("../../datos/historia/**/*.ink", {
   query: "?raw", import: "default", eager: true,
 }) as Record<string, string>;
 
-const pngs = import.meta.glob("../../../SALTOATRAS_ARTE/juego/*.png", {
+const pngs = import.meta.glob("../../../SALTOATRAS_ARTE/juego/**/*.png", {
   query: "?url", import: "default", eager: true,
 }) as Record<string, string>;
 
@@ -201,7 +201,14 @@ export function cargarDatos(): Datos {
   }
 
   const imagenes: Record<string, string> = {};
-  for (const [ruta, url] of Object.entries(pngs)) imagenes[nombreDe(ruta)] = url;
+  for (const [ruta, url] of Object.entries(pngs)) {
+    // Las imágenes se buscan por su nombre, estén en la subcarpeta que estén (máximo 2 niveles).
+    const nombre = nombreDe(ruta);
+    const carpetas = ruta.split("SALTOATRAS_ARTE/juego/")[1].split("/").slice(0, -1);
+    if (imagenes[nombre]) errores.push(`Imagen repetida en SALTOATRAS_ARTE/juego: ${nombre} (está en más de una carpeta)`);
+    if (carpetas.length > 2) errores.push(`SALTOATRAS_ARTE/juego: ${carpetas.join("/")} tiene más de 2 niveles de carpetas`);
+    imagenes[nombre] = url;
+  }
   const sonidos: Record<string, string> = {};
   for (const [ruta, url] of Object.entries(audios)) sonidos[nombreDe(ruta)] = url;
 
