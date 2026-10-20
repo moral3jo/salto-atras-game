@@ -15,7 +15,7 @@
 
 === con_senora
 { con_senora == 1:
-    Señora: Si entra usted ahí, se pierde.
+    Señora (aviso): Si entra usted ahí, se pierde.
 - else:
     Señora: ¿Todavía por aquí?
 }

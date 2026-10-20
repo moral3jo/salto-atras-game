@@ -6,7 +6,8 @@ al_llegar: bosque_llegar
 cosas:
   - id: senora
     nombre: Una señora sentada
-    zona: [180, 300, 80, 150]
+    zona: [60, 270, 300, 220]
+    imagen: senora
     hablar: senora
 
   - id: camino

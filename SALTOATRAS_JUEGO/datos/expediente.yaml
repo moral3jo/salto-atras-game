@@ -33,7 +33,9 @@ carlos:
 
 elena:
   tipo: persona
+  icono: icono-elena
   titulo: Elena
+  cuerpo: elena
   texto: |
     Mi jefa en el ministerio. Me ha mandado aquí.
 
@@ -49,6 +51,7 @@ alcalde:
 senora:
   tipo: persona
   titulo: La señora del bosque
+  cuerpo: senora
   texto: |
     Sentada a la entrada del bosque. Dice que si entro, me pierdo.
 

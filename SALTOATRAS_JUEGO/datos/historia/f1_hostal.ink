@@ -34,7 +34,7 @@ Una llave en cada gancho. Soy el único huésped.
 = _primera_llamada
 Tres tonos. Elena siempre deja sonar tres.
 Elena: Martínez. ¿Ya estás en Medina?
-Elena: Lo tuyo es confirmar si hay fraude. Sin que se note a qué has ido.
+Elena (gesto): Lo tuyo es confirmar si hay fraude. Sin que se note a qué has ido.
 Elena: Para ellos, vas a preparar el centro nuevo.
 Elena: ¿Te has mirado el expediente? Te lo di antes de salir.
 ~ activar("expediente")
@@ -44,7 +44,7 @@ Elena: ¿Te has mirado el expediente? Te lo di antes de salir.
 
 // Cuando ya ha abierto el expediente (la guía reabre la llamada).
 = _segunda_llamada
-Elena: Tres solicitudes. En un pueblo de cuatrocientos.
+Elena (inquieta): Tres solicitudes. En un pueblo de cuatrocientos.
 ~ activar("panel")
 ~ activar("informe")
 ~ posit("fraude")
