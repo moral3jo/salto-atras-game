@@ -165,8 +165,8 @@ export class Boli {
     const ultima = this.palabras.at(-1)?.objeto;
     if (!renglon || !ultima) return;
     const g = this.escena.add.graphics({
-      x: ultima.x + ultima.width - RELLENO_DER - this.grosor + 1,
-      y: ultima.y + ultima.height * 0.72,
+      x: ultima.x + ultima.width - RELLENO_DER - this.grosor + 5,
+      y: ultima.y + ultima.height * 0.72 - 2,
     });
     // Un punto pequeño, como el que se escribe a boli al final de una frase.
     g.fillStyle(Phaser.Display.Color.HexStringToColor(TINTA.texto).color, 1).fillEllipse(0, 0, 3.6, 3.2);

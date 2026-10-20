@@ -25,7 +25,7 @@ policia:
 
 carlos:
   tipo: persona
-  titulo: Carlos, el chico del libro
+  titulo: El chico del libro
   cuerpo: carlos
   texto: |
     Un chaval de unos quince años, siempre con un libro.

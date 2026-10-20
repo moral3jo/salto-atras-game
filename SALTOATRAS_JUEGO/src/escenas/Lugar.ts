@@ -213,7 +213,7 @@ export class Lugar extends Phaser.Scene {
 
     const zona = this.add.zone(x, y, w, h).setOrigin(0).setInteractive({ useHandCursor: true });
     zona.on("pointerover", () => {
-      if (!this.bloqueado()) this.mostrarEtiqueta(cosa.nombre);
+      if (!this.bloqueado()) this.mostrarEtiqueta(cosa.hablar && partida.datos.fichas[cosa.hablar] ? partida.nombre(cosa.hablar) : cosa.nombre);
     });
     zona.on("pointerout", () => this.etiqueta.setVisible(false));
     zona.on("pointerup", () => {

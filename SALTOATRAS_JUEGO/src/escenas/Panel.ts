@@ -61,7 +61,7 @@ ${p.conclusion ?? ""}` : p.pregunta;
   private papel(id: string, x: number, y: number, giro: number) {
     const f = partida.datos.fichas[id];
     const hoja = this.add.rectangle(x, y, POSIT.ancho, POSIT.alto, 0xf4efe0).setOrigin(0).setAngle(giro).setStrokeStyle(1, 0x000000, 0.2);
-    texto(this, x + 12, y + 16, f.titulo, { fontSize: "15px", color: COLOR.tinta, fontStyle: "bold", wordWrap: { width: POSIT.ancho - 24 } }).setAngle(giro);
+    texto(this, x + 12, y + 16, partida.nombre(f.id), { fontSize: "15px", color: COLOR.tinta, fontStyle: "bold", wordWrap: { width: POSIT.ancho - 24 } }).setAngle(giro);
     this.add.circle(x + POSIT.ancho / 2, y + 6, 5, 0xb03a2e);
     if (f.de_cerca) {
       hoja.setInteractive({ useHandCursor: true }).on("pointerup", () => this.scene.launch("decerca", { ficha: id }));

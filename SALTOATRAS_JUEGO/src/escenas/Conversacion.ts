@@ -334,7 +334,7 @@ export class Conversacion extends Phaser.Scene {
     }
     this.bocadillo.add(fondo);
     if (quien) {
-      this.bocadillo.add(texto(this, BOCADILLO.x + 20, BOCADILLO.y + 14, quien.toUpperCase(), {
+      this.bocadillo.add(texto(this, BOCADILLO.x + 20, BOCADILLO.y + 14, (esMartinez ? quien : partida.nombre(this.persona)).toUpperCase(), {
         fontSize: "13px", color: esMartinez ? "#9fb3c8" : COLOR.nombre, fontStyle: "bold",
       }));
     }
@@ -386,7 +386,7 @@ export class Conversacion extends Phaser.Scene {
       img.x = CUERPO.ancho / 2 + (0.5 - centroDeCuerpo(this, clave)) * img.displayWidth;
       this.cuerpo.add(img);
     } else {
-      this.cuerpo.add(this.silueta(ficha?.titulo ?? this.persona, pose));
+      this.cuerpo.add(this.silueta(ficha ? partida.nombre(ficha.id) : this.persona, pose));
     }
     if (antes !== undefined && antes !== (pose ?? "")) {
       this.tweens.add({ targets: this.cuerpo, y: { from: CUERPO.y + 6, to: CUERPO.y }, duration: 140, ease: "Quad.Out" });

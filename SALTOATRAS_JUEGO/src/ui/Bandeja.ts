@@ -117,12 +117,14 @@ export function carta(
   c.add(fondo);
   // La persona con la que se habla va la primera y sin nombre: ya se sabe quién es.
   const sinNombre = o.primera === f.id;
+  // Con dibujo, el nombre solo sale al pasar el ratón.
+  let rotulo: Phaser.GameObjects.Text | undefined;
   const cuerpo = f.cuerpo && escena.textures.exists(f.cuerpo) ? f.cuerpo : null;
   if (f.icono && escena.textures.exists(f.icono)) {
     const img = escena.add.image(CARTA.ancho / 2, CARTA.alto / 2, f.icono);
     img.setScale(Math.min(CARTA.ancho / img.width, CARTA.alto / img.height));
     c.add(img);
-    if (!sinNombre) cartaConTitulo(escena, c, f.titulo);
+    if (!sinNombre) rotulo = cartaConTitulo(escena, c, partida.nombre(f.id));
   } else if (f.tipo === "persona" && cuerpo) {
     // Una persona sin icono: la cabeza y los hombros de su cuerpo, recortados en cuadrado.
     const img = escena.add.image(0, 0, cuerpo).setOrigin(0);
@@ -131,9 +133,9 @@ export function carta(
     img.setCrop((img.width - lado) / 2, 0, lado, lado * (CARTA.alto / CARTA.ancho));
     img.setScale(s).setPosition(-((img.width - lado) / 2) * s, 0);
     c.add(img);
-    if (!sinNombre) cartaConTitulo(escena, c, f.titulo);
+    if (!sinNombre) rotulo = cartaConTitulo(escena, c, partida.nombre(f.id));
   } else {
-    c.add(texto(escena, 5, 5, f.titulo, { fontSize: "11px", color: COLOR.tinta, wordWrap: { width: CARTA.ancho - 10 } }));
+    c.add(texto(escena, 5, 5, partida.nombre(f.id), { fontSize: "11px", color: COLOR.tinta, wordWrap: { width: CARTA.ancho - 10 } }));
   }
   if (o.marcada?.(f.id)) {
     c.setAlpha(0.7);
@@ -144,8 +146,8 @@ export function carta(
   if (o.activa && o.elegir) {
     const elegir = o.elegir;
     fondo.setInteractive({ useHandCursor: true })
-      .on("pointerover", () => fondo.setStrokeStyle(2, 0xffffff))
-      .on("pointerout", () => fondo.setStrokeStyle())
+      .on("pointerover", () => { fondo.setStrokeStyle(2, 0xffffff); rotulo?.setAlpha(1); })
+      .on("pointerout", () => { fondo.setStrokeStyle(); rotulo?.setAlpha(0); })
       .on("pointerup", () => elegir(f.id));
     elevar(escena, c, fondo);
   }
@@ -154,12 +156,14 @@ export function carta(
 
 /** El título en una banda oscura abajo (hasta tres renglones: las cartas son estrechas). */
 function cartaConTitulo(escena: Phaser.Scene, c: Phaser.GameObjects.Container, titulo: string) {
-  c.add(
+  const t = (
     texto(escena, CARTA.ancho / 2, CARTA.alto, titulo, {
       fontSize: "9px", color: COLOR.texto, backgroundColor: "#000000bb", align: "center",
       padding: { x: 2, y: 1 }, wordWrap: { width: CARTA.ancho - 6 },
-    }).setOrigin(0.5, 1),
-  );
+    }).setOrigin(0.5, 1)
+  ).setAlpha(0);
+  c.add(t);
+  return t;
 }
 
 export const MEDIDAS_CARTA = CARTA;

@@ -102,7 +102,8 @@ Policía (borde): ¿Y a mí qué me cuenta?
 
 === con_carlos
 { con_carlos == 1:
-    Carlos: Hola soy Carlos
+    Chico: Hola soy Carlos
+    ~ nombrar("carlos", "Carlos")
     Un chaval con un libro, tal vez el pueda ayudarme.
 - else:
     Carlos: ¿Sí?

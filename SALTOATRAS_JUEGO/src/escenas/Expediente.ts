@@ -40,7 +40,7 @@ export class Expediente extends Papel {
     const ver = (id: string) => {
       const f = partida.datos.fichas[id];
       this.elegida = id;
-      titulo.setText(f.titulo);
+      titulo.setText(partida.nombre(id));
       cuerpo.setText(f.texto);
       deCerca?.destroy();
       deCerca = undefined;
@@ -64,7 +64,7 @@ export class Expediente extends Papel {
       texto(this, HOJA.x + 20, y, cabecera, { fontSize: "11px", color: "#6b5f4c", fontStyle: "bold" });
       y += 20;
       for (const f of deTipo) {
-        const t = texto(this, HOJA.x + 28, y, f.titulo, { fontSize: "14px", color: COLOR.tinta, wordWrap: { width: 200 } })
+        const t = texto(this, HOJA.x + 28, y, partida.nombre(f.id), { fontSize: "14px", color: COLOR.tinta, wordWrap: { width: 200 } })
           .setInteractive({ useHandCursor: true })
           .on("pointerup", () => ver(f.id));
         y += t.height + 8;

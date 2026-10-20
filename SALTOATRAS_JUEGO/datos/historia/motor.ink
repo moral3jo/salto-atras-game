@@ -33,6 +33,13 @@ EXTERNAL terminar()
 === function terminar()
 [fin de la conversación]
 
+// Desde ahora esa ficha se llama así en todas partes (etiquetas, cartas, expediente,
+// quien habla). Hasta entonces se llama como dice su `titulo` (p. ej. "El chico del libro").
+// nombrar("carlos", "Carlos")
+EXTERNAL nombrar(id, nombre)
+=== function nombrar(id, nombre)
+[{id} se llama {nombre}]
+
 // Cierra la conversación y obliga a abrir esa parte de la interfaz (un dedo la señala y
 // nada más se puede tocar). Al cerrarla, la conversación se reabre con la misma persona.
 // guiar("expediente")

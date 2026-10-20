@@ -24,6 +24,8 @@ interface Estado {
   preguntado: Record<string, string[]>;
   /** Pregunta del panel → con qué se resolvió. */
   resueltas: Record<string, { respuesta: string; prueba: string }>;
+  /** Ficha → nombre que se le da desde que Ink lo dice (nombrar()); mientras no, su título. */
+  nombres: Record<string, string>;
   /** Cómo se ve ahora el juego (un ambiente de juego.yaml; "" = normal). */
   ambiente: string;
 }
@@ -56,6 +58,9 @@ export class Partida {
       this.porGuiar = parte;
       this.cortar = true;
     }, false);
+    h.BindExternalFunction("nombrar", (id: string, nombre: string) => {
+      this.estado.nombres[id] = nombre;
+    }, false);
     h.BindExternalFunction("terminar", () => { this.cortar = true; }, false);
     h.BindExternalFunction("pensar", (id: string) => {
       this.anadir("posits", id, "posit");
@@ -73,7 +78,7 @@ export class Partida {
   }
 
   private estadoInicial(): Estado {
-    return { lugar: this.datos.inicio, fichas: [], posits: [], activos: [], preguntado: {}, resueltas: {}, ambiente: "" };
+    return { lugar: this.datos.inicio, fichas: [], posits: [], activos: [], preguntado: {}, resueltas: {}, nombres: {}, ambiente: "" };
   }
 
   /** Partida nueva: todo a cero, también lo que Ink tuviera pendiente. */
@@ -206,6 +211,11 @@ export class Partida {
   /** Si Ink ha pedido algo que obliga a esperar al jugador: pensar, cortar o irse. */
   hayPendiente(): boolean {
     return this.porPensar !== null || this.cortar || this.destino !== null;
+  }
+
+  /** Cómo se llama una ficha ahora: el nombre que le haya dado Ink (nombrar) o, si no, su título. */
+  nombre(id: string): string {
+    return this.estado.nombres?.[id] ?? this.datos.fichas[id]?.titulo ?? id;
   }
 
   /** Si Ink ha pedido guiar al jugador a una parte de la interfaz, la devuelve y la olvida. */

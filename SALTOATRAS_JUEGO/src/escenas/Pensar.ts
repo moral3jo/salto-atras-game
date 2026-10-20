@@ -8,7 +8,11 @@ import * as Phaser from "phaser";
 import { ALTO, ANCHO, COLOR, MANO, MAQUINA, camara, texto } from "../config";
 import { partida } from "../juego";
 import { carta, dibujarBandeja, MEDIDAS_CARTA } from "../ui/Bandeja";
+import { ajuste } from "../motor/ajustes";
 import { entrar, salir } from "../ui/animar";
+import { estilarCamara } from "../ui/estilo";
+import { Pelicula } from "../ui/pelicula";
+import { velo } from "../ui/velo";
 
 const HOJA = { x: 40, y: 24, ancho: ANCHO - 80, alto: 320 };
 const LISTA = { x: HOJA.x + 18, ancho: 250 };
@@ -42,10 +46,13 @@ export class Pensar extends Phaser.Scene {
   create() {
     camara(this);
     // Tapa todo lo de detrás; esta hoja solo se cierra con su botón o Escape.
-    this.add.rectangle(0, 0, ANCHO, ALTO, 0x000000, 0.6).setOrigin(0).setInteractive();
+    velo(this, 0.6);
     this.input.keyboard?.on("keydown-ESC", () => this.cerrar());
     this.todo = this.add.container();
     this.dibujar();
+    // Con el mismo estilo que el resto del juego (tramado y grano).
+    new Pelicula(this, 50, true, "peli", ajuste("peli.granoOscuro"));
+    estilarCamara(this.cameras.main);
     entrar(this);
   }
 

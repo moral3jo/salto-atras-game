@@ -55,7 +55,7 @@ export class Interfaz extends Phaser.Scene {
     const ev = partida.eventos;
     const alActivar = () => this.dibujar();
     // Solo lo que se añade: a dónde va (expediente o panel) ya se sabe.
-    const alFicha = (id: string) => this.avisar(partida.datos.fichas[id].titulo);
+    const alFicha = (id: string) => this.avisar(partida.nombre(id));
     const alPosit = (id: string) => this.avisar(partida.datos.posits[id].pregunta);
     const alResolver = (id: string) => this.avisar(`Resuelto: ${partida.datos.posits[id].pregunta}`);
     // Un aviso con texto libre (lo usa el panel de debug para probarlos).
