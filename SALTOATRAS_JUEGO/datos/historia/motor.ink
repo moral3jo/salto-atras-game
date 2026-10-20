@@ -2,6 +2,10 @@
 // En el juego las ejecuta el motor; en Inky se usa la versión de aquí abajo,
 // que solo lo enseña entre corchetes para poder probar sin el juego.
 
+// Mientras sea cierta, no se puede acabar la conversación (ni "Adiós" ni Escape):
+// para los tutoriales que obligan a seguir hablando. ~ retener = true
+VAR retener = false
+
 // Al acabar lo que se está diciendo, cambia de lugar. ir("hostal")
 EXTERNAL ir(lugar)
 === function ir(lugar)

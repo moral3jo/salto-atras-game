@@ -69,6 +69,8 @@ export interface Posit {
   opciones?: string[];
   /** Fichas que la sostienen: vale cualquiera de ellas. */
   pruebas?: string[];
+  /** Hasta resolverla, Pensar no se puede cerrar ni cambiar de pregunta (tutoriales). */
+  obligatoria?: boolean;
   /** Lo que queda escrito en el panel al resolverla. */
   conclusion?: string;
   /** Nudo de Ink que se lee al resolverla si se está hablando con esa persona. */

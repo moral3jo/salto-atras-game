@@ -218,6 +218,15 @@ export class Partida {
     return this.estado.nombres?.[id] ?? this.datos.fichas[id]?.titulo ?? id;
   }
 
+  /** ¿Ink ha pedido que no se pueda acabar la conversación (VAR retener)? */
+  get retenida(): boolean {
+    try {
+      return !!this.historia.variablesState.$("retener");
+    } catch {
+      return false;
+    }
+  }
+
   /** Si Ink ha pedido guiar al jugador a una parte de la interfaz, la devuelve y la olvida. */
   tomarGuia(): string | null {
     const g = this.porGuiar;

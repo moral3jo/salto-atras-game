@@ -8,6 +8,12 @@ VAR sabe_bosque = false
 }
 ->->
 
+=== hostal_fuera_llegar
+{ hostal_fuera_llegar == 1:
+    El hostal. Una puerta, dos ventanas y la calle que sigue.
+}
+->->
+
 === hostal_llaves
 Una llave en cada gancho. Soy el único huésped.
 (Del hostal. Probablemente del pueblo.)
@@ -24,8 +30,7 @@ Una llave en cada gancho. Soy el único huésped.
 - resuelta("quien_cerro") && not _cerro_bien:
     -> _cerro_bien ->
 - not resuelta("quien_cerro"):
-    Elena: ¿Ya sabes quién ha dejado cerrado el ayuntamiento?
-    ~ pensar("quien_cerro")
+    Elena: ¿Qué has visto hasta ahora, Martínez?
 - else:
     Elena: ¿Qué pasa ahora, Martínez?
 }
@@ -50,20 +55,32 @@ Elena (inquieta): Tres solicitudes. En un pueblo de cuatrocientos.
 ~ posit("fraude")
 ~ posit("alcalde_ajo")
 ~ posit("donde_vive")
-// Tutorial de pensar: pregunta, respuesta y prueba.
+// Tutorial de pensar: no cuelga hasta que le cuenta lo del ayuntamiento o la nota.
 Elena: Y una cosa: lo que me cuentes, con pruebas. Si no, no me vale.
-Elena: Empieza por algo fácil. El ayuntamiento cerrado: ¿quién lo ha dejado así?
+Elena: Cuéntame qué has visto ahí.
+~ retener = true
+->->
+
+// Lo que desencadena el tutorial: Elena pide razonarlo y se abre la pregunta, que no se puede dejar.
+= _tutorial_ayto
+Elena: ¿El ayuntamiento cerrado? Eso es muy fuerte. Necesito hacer un informe sobre ello.
+Elena: Ya sabes cómo trabajo: todo tiene que estar justificado. Así que razónamelo.
 ~ activar("pensar")
 ~ pensar("quien_cerro")
 ->->
 
 = _cerro_bien
+~ retener = false
 Elena: El alcalde, claro. ¿Ves? Pregunta, respuesta y prueba. Así me gusta.
 Elena: Lo que encuentres, me lo cuentas. ¿Algo raro al llegar?
 ->->
 
 = ayuntamiento
-Elena: ¿Cerrado un martes? Es una vergüenza que esté cerrado a estas horas.
+{ not resuelta("quien_cerro"):
+    -> _tutorial_ayto ->
+- else:
+    Elena: ¿Cerrado un martes? Es una vergüenza que esté cerrado a estas horas.
+}
 ->->
 
 = multa
@@ -75,6 +92,10 @@ Elena: ¿El alcalde?
 -> _donde_vive
 
 = cartel
+{ not resuelta("quien_cerro"):
+    -> _tutorial_ayto ->
+    ->->
+}
 Elena: "Venid a verme a casa". Qué detalle.
 -> _donde_vive
 

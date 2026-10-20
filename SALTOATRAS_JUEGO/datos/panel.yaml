@@ -13,6 +13,7 @@ quien_cerro:
   pregunta: ¿Quién ha dejado cerrado el ayuntamiento?
   respuesta: alcalde
   pruebas: [cartel]
+  obligatoria: true          # tutorial: no se puede salir sin resolverla
   conclusion: "El alcalde. Su propia nota lo dice: atiende en su casa."
   al_resolver: con_elena._cerro_bien
 

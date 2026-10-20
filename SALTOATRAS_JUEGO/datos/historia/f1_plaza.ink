@@ -13,7 +13,12 @@ VAR sabe_hostal = false
 // El chico llega cuando ya se ha ido el municipal y Martínez ha leído la nota
 // y mirado el ayuntamiento: así tiene esas fichas para preguntarle.
 === function carlos_en_plaza
-~ return policia_se_fue and fase == 1 and plaza_ayuntamiento and plaza_cartel
+~ return policia_se_fue and fase == 1 and plaza_ayuntamiento and plaza_cartel and not tras_tutorial()
+
+// Cuando Martínez ya ha razonado con Elena lo del ayuntamiento, la grúa se ha llevado el coche
+// y el chico se ha ido.
+=== function tras_tutorial
+~ return con_elena._cerro_bien > 0
 
 // ---- Mirar ----
 
@@ -35,6 +40,11 @@ El ayuntamiento parece cerrado, _funcionarios_
 A casa. ¿A qué casa?
 (Un detalle sin importancia, por lo visto)
 ~ ficha("alcalde")
+->->
+
+=== plaza_ticket
+Un ticket de la grúa, en el suelo.
+Se han llevado el coche.
 ->->
 
 === plaza_coche

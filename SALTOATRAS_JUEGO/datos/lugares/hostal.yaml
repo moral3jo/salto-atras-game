@@ -14,13 +14,7 @@ cosas:
     zona: [255, 150, 195, 90]
     nudo: hostal_llaves
 
-  - id: al_bosque
-    nombre: Ir al bosque
-    zona: [875, 60, 85, 420]
-    ir: bosque_entrada
-    si: sabe_bosque
-
-  - id: a_la_plaza
-    nombre: Volver a la plaza
+  - id: a_la_calle
+    nombre: Salir a la calle
     zona: [0, 70, 115, 400]
-    ir: plaza
+    ir: hostal_fuera

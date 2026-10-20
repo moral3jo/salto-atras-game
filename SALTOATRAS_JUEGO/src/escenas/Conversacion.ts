@@ -79,7 +79,7 @@ export class Conversacion extends Phaser.Scene {
     velo(this, 0.75).on("pointerup", () => this.pulsar());
     this.input.keyboard?.on("keydown-SPACE", () => this.pulsar());
     this.input.keyboard?.on("keydown-ENTER", () => this.pulsar());
-    this.input.keyboard?.on("keydown-ESC", () => this.modo === "temas" && this.cerrar());
+    this.input.keyboard?.on("keydown-ESC", () => this.modo === "temas" && !partida.retenida && this.cerrar());
 
     this.cuerpo = this.add.container(CUERPO.x, CUERPO.y);
     this.bocadillo = this.add.container();
@@ -443,6 +443,8 @@ export class Conversacion extends Phaser.Scene {
       elegir: (id) => this.preguntar(id),
       redibujar: () => this.dibujarBandeja(),
     });
+    // En un tutorial que obliga a seguir hablando no hay despedida.
+    if (partida.retenida) return;
     const adios = texto(this, ANCHO - 20, BANDEJA.y + 10, "Adiós", {
       fontSize: "14px", color: COLOR.texto, backgroundColor: "#3a2f26", padding: { x: 12, y: 4 },
     }).setOrigin(1, 0).setInteractive({ useHandCursor: true }).on("pointerup", () => this.cerrar());

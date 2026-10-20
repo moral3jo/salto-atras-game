@@ -37,8 +37,11 @@ export class Pensar extends Phaser.Scene {
 
   init(datos: { pregunta?: string }) {
     const posits = partida.estado.posits;
-    const abierta = posits.find((id) => !partida.estado.resueltas[id]);
-    this.elegida = datos.pregunta ?? abierta ?? posits[0] ?? null;
+    const sinResolver = (id: string) => !partida.estado.resueltas[id];
+    const abierta = posits.find(sinResolver);
+    // Una pregunta obligatoria sin resolver va antes que cualquier otra.
+    const obligatoria = posits.find((id) => partida.datos.posits[id].obligatoria && sinResolver(id));
+    this.elegida = obligatoria ?? datos.pregunta ?? abierta ?? posits[0] ?? null;
     this.resueltaAhora = null;
     this.limpiar();
   }
@@ -47,13 +50,19 @@ export class Pensar extends Phaser.Scene {
     camara(this);
     // Tapa todo lo de detrás; esta hoja solo se cierra con su botón o Escape.
     velo(this, 0.6);
-    this.input.keyboard?.on("keydown-ESC", () => this.cerrar());
+    this.input.keyboard?.on("keydown-ESC", () => !this.bloqueada() && this.cerrar());
     this.todo = this.add.container();
     this.dibujar();
     // Con el mismo estilo que el resto del juego (tramado y grano).
     new Pelicula(this, 50, true, "peli", ajuste("peli.granoOscuro"));
     estilarCamara(this.cameras.main);
     entrar(this);
+  }
+
+  /** Una pregunta obligatoria sin resolver: no se puede salir ni cambiar de pregunta. */
+  private bloqueada() {
+    const p = this.elegida ? partida.datos.posits[this.elegida] : null;
+    return !!p?.obligatoria && !partida.estado.resueltas[this.elegida!];
   }
 
   private limpiar() {
@@ -74,10 +83,12 @@ export class Pensar extends Phaser.Scene {
     this.dibujarLista();
     this.dibujarPregunta();
 
-    const luego = texto(this, HOJA.x + HOJA.ancho - 16, HOJA.y + HOJA.alto - 14, "Lo pienso luego", {
-      fontSize: "13px", color: COLOR.tinta, backgroundColor: "#d9cfb6", padding: { x: 10, y: 4 },
-    }).setOrigin(1, 1).setInteractive({ useHandCursor: true }).on("pointerup", () => this.cerrar());
-    this.todo.add(luego);
+    if (!this.bloqueada()) {
+      const luego = texto(this, HOJA.x + HOJA.ancho - 16, HOJA.y + HOJA.alto - 14, "Lo pienso luego", {
+        fontSize: "13px", color: COLOR.tinta, backgroundColor: "#d9cfb6", padding: { x: 10, y: 4 },
+      }).setOrigin(1, 1).setInteractive({ useHandCursor: true }).on("pointerup", () => this.cerrar());
+      this.todo.add(luego);
+    }
 
     const resuelta = this.elegida ? partida.estado.resueltas[this.elegida] : null;
     dibujarBandeja(this, this.todo, {
@@ -100,7 +111,8 @@ export class Pensar extends Phaser.Scene {
         color: COLOR.tinta,
         fontStyle: id === this.elegida ? "bold" : "normal",
         wordWrap: { width: LISTA.ancho - 14 },
-      }).setInteractive({ useHandCursor: true }).on("pointerup", () => {
+      }).setInteractive({ useHandCursor: !this.bloqueada() }).on("pointerup", () => {
+        if (this.bloqueada()) return;
         this.elegida = id;
         this.limpiar();
         this.dibujar();

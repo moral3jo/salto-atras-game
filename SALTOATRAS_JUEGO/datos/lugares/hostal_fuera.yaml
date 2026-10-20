@@ -1,0 +1,21 @@
+# La calle del hostal, vista desde fuera. Se entra aquí al venir de la plaza y al salir del hostal.
+nombre: Calle del hostal
+fondo: hostal-fuera
+al_llegar: hostal_fuera_llegar
+
+cosas:
+  - id: puerta
+    nombre: El hostal
+    zona: [425, 245, 85, 170]
+    ir: hostal
+
+  - id: a_la_plaza
+    nombre: Volver a la plaza
+    zona: [0, 60, 130, 460]
+    ir: plaza
+
+  - id: al_bosque
+    nombre: Ir al bosque
+    zona: [830, 60, 130, 460]
+    ir: bosque_entrada
+    si: sabe_bosque

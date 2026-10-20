@@ -34,6 +34,13 @@ cosas:
     zona: [-70, 404, 290, 161]   # sale por abajo a la izquierda: no se ve entero
     imagen: coche           # la figura se ve de pie sobre la zona (cabe sin deformarse)
     nudo: plaza_coche
+    si: "!tras_tutorial"
+
+  - id: ticket_grua
+    nombre: Ticket de la grúa
+    zona: [60, 470, 70, 40]    # donde estaba el coche
+    nudo: plaza_ticket
+    si: tras_tutorial
 
   - id: policia
     nombre: Un municipal
@@ -45,7 +52,7 @@ cosas:
   - id: al_hostal
     nombre: Ir al hostal
     zona: [643, 254, 95, 203]   # la calle del hostal
-    ir: hostal
+    ir: hostal_fuera
     si: sabe_hostal
 
   - id: carlos
