@@ -37,19 +37,37 @@ const cuerpos = [...codigo.matchAll(/^\s*cuerpo:\s*([\w-]+)/gm)].map((m) => m[1]
 const esta = (texto, palabra) => new RegExp(String.raw`(?<![\w-])` + palabra + String.raw`(?![\w-])`).test(texto);
 
 const sinUsar = [];
+const dudosas = [];
+const pendientes = [];
 const repetidas = new Map();
 for (const p of imagenes) {
   const nombre = basename(p, extname(p));
   repetidas.set(nombre, [...(repetidas.get(nombre) ?? []), relative(arte, p)]);
   const base = nombre.replace(/-[a-z]-[a-z]+$/, "");
+  const ruta = relative(arte, p).replaceAll("\\", "/");
+  // _parausar/ y _descartes/ son carpetas de paso: no cuentan como "sin usar".
+  if (ruta.startsWith("_")) {
+    if (ruta.startsWith("_parausar/")) pendientes.push(ruta);
+    continue;
+  }
   let usada = esta(codigo, nombre) || esta(codigo, base);
+  // Un nombre de una sola palabra (papel, expediente…) sale en el código por otros motivos.
+  if (usada && !base.includes("-")) {
+    dudosas.push(ruta);
+    continue;
+  }
   if (!usada) {
     const cuerpo = cuerpos.find((c) => base.startsWith(c + "-"));
     if (cuerpo && esta(ink, base.slice(cuerpo.length + 1))) usada = true;
   }
-  if (!usada) sinUsar.push(relative(arte, p).replaceAll("\\", "/"));
+  if (!usada) sinUsar.push(ruta);
 }
 
 for (const [n, rutas] of repetidas) if (rutas.length > 1) console.log(`REPETIDA ${n}: ${rutas.join(", ")}`);
 console.log(`${imagenes.length} imágenes, ${sinUsar.length} sin usar:\n`);
 for (const r of sinUsar.sort()) console.log("  " + r);
+if (dudosas.length) {
+  console.log("\nA revisar a mano (su nombre es una palabra suelta que sale en el código por otras razones):\n");
+  for (const r of dudosas.sort()) console.log("  " + r);
+}
+if (pendientes.length) console.log("\nEn _parausar (esperando a que se usen): " + pendientes.length);

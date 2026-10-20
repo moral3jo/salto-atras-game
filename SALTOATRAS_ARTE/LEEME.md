@@ -23,6 +23,10 @@ Todo el arte se genera con IA. No se pelea para que salga igual: se genera
   `juego/lugares/hostal.png` o `juego/ui/botones/boton-1.png`). El juego busca por el
   **nombre del fichero**, no por la carpeta: mover una imagen no rompe nada, pero
   **no puede haber dos con el mismo nombre** (el juego lo avisa en pantalla).
+  Carpetas de ahora: `lugares/` (con `avatares/`), `personajes/` (con `avatares/`),
+  `items/` y `ui/`. Dos especiales:
+  - `_parausar/`: lo que se va dejando para usar. Se mueve a su carpeta cuando entra en el juego.
+  - `_descartes/`: lo que no se usa y se aparta temporalmente; luego se pasa a `descartes/` de fuera.
   Para ver qué imágenes de `juego/` no usa nadie: `npm run imagenes` (desde `SALTOATRAS_JUEGO`).
 - `descartes/`: las versiones viejas. Cuando una imagen mejora, la anterior se
   copia aquí y la nueva ocupa su sitio en `juego/`.
