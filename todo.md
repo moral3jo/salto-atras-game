@@ -17,4 +17,3 @@
 17. las flores azules no entran en inventario (por ahora, son una pista no algo clave)
 18. para ir al bosque a buscar al alcalde deberiamos ir porque lo dice elena antes asi usamos 2 veces el pienso
 19. montar que si el usuario no es capaz de deducirlo el solo ayudarle???
-20. si el jugador no consigue deducir quién cerró el ayuntamiento, ayudarle (ahora la pregunta del tutorial no se puede dejar) — pendiente
