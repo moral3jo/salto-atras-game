@@ -12,6 +12,7 @@ import { DURACION, aparecer, desaparecer } from "../ui/animar";
 import { estilar } from "../ui/estilo";
 import { Pelicula, evolucionandoPelicula, evolucionarPelicula, peliculaMezcla } from "../ui/pelicula";
 import { Vida } from "../ui/vida";
+import { musica } from "../motor/musica";
 
 /** Escenas que se abren encima del lugar: mientras alguna está, no hay rótulo ni mano. */
 const ENCIMA = ["dialogo", "conversacion", "decerca", "pensar", "expediente", "panel", "informe", "pausa"];
@@ -75,6 +76,7 @@ export class Lugar extends Phaser.Scene {
     this.etiqueta = this.add.container(0, 0, [this.etiquetaFondo, this.etiquetaTexto]).setDepth(60).setVisible(false);
     this.input.on("pointermove", (p: Phaser.Input.Pointer) => this.etiqueta.visible && this.situarEtiqueta(p));
 
+    musica(this, lugar.musica ?? partida.datos.musica?.juego ?? "");
     if (!this.scene.isActive("interfaz")) this.scene.launch("interfaz");
     partida.eventos.on("fin-conversacion", this.alAcabarConversacion, this);
     partida.eventos.on("oscuridad", this.alOscurecer, this);

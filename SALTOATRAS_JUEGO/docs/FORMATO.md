@@ -387,3 +387,16 @@ se mira en Ink: `{ resuelta("quien_cerro") && not _cerro_bien: -> _cerro_bien ->
 la señala y nada más se puede tocar. Al cerrarla, la conversación se reabre con la misma persona
 (así que la parte siguiente del nudo debe poder distinguirse, p. ej. con un `not _segunda_llamada`).
 Una ficha con `de_cerca` tiene en el expediente un botón "Ver el papel".
+
+
+## Música
+
+Las pistas son ficheros de `SALTOATRAS_ARTE/sonido/` (mp3, ogg o wav, en cualquier subcarpeta; se
+nombran sin extensión). Una sola suena a la vez, en bucle y con fundido al cambiar.
+
+- `musica:` en `juego.yaml`: `portada` (el menú) y `juego` (por defecto en todos los lugares).
+- `musica:` en un lugar: otra pista solo ahí.
+- `~ musica("pista")` en Ink la cambia en cualquier momento; `~ musica("")` la calla.
+
+Pedir la pista que ya suena no la reinicia. El volumen está en la Pausa (Normal / Baja / Apagada)
+y en F2 (`audio.musica`). Sin el fichero, silencio.

@@ -1,7 +1,7 @@
 1. tenemos que recuperar el click para avanzar rapido con los textos pero no se como hacerlo porque el difuminado me gustaba mucho, tal vez deberiamos abandonarlo y no permitir si no entra todo el texto que salte o borre.
 2. no queda bien la transicion de medina al ayto, revisarlo
 3. El estilo del pensamiento interior no encaja con el estilo del juego ahora pero quiero que sea muy diferentes para que se note que es algo fuera del juego, que nunca este claro si responde a la gente o solo son pensamientos.
-4. tenemos que meter sonidos y musica, hará que el juego brille muchisimo
+4. tenemos que meter sonidos (la música ya suena: una pista, marea-baja; faltan más pistas y los efectos) , hará que el juego brille muchisimo
 5. el lapiz azul cuando pienso es horrible
 6. Nota de la puerta es un cuaderno :P
 7. probar metiendo toda la interface detrás del efecto o tal vez una version mas suave que tal queda ya que ahora mismo salen super limpias

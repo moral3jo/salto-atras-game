@@ -9,6 +9,7 @@ import { opciones } from "../ui/Opciones";
 import { DURACION, aparecer } from "../ui/animar";
 import { estilarCamara } from "../ui/estilo";
 import { Pelicula, reiniciarPelicula } from "../ui/pelicula";
+import { musica } from "../motor/musica";
 
 export class Portada extends Phaser.Scene {
   private menu?: Phaser.GameObjects.Container;
@@ -31,6 +32,7 @@ export class Portada extends Phaser.Scene {
 
     camara(this);
     const { titulo, aviso } = partida.datos;
+    musica(this, partida.datos.musica?.portada ?? "");
     if (this.textures.exists("logo-emblema")) {
       const e = this.add.image(ANCHO / 2, 118, "logo-emblema");
       // El óvalo del grabado es más alto que ancho: se ensancha un poco para que el círculo sea redondo.

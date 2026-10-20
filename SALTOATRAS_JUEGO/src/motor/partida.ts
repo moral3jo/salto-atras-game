@@ -58,6 +58,7 @@ export class Partida {
       this.porGuiar = parte;
       this.cortar = true;
     }, false);
+    h.BindExternalFunction("musica", (pista: string) => this.eventos.emit("musica", pista), false);
     h.BindExternalFunction("nombrar", (id: string, nombre: string) => {
       this.estado.nombres[id] = nombre;
     }, false);

@@ -98,6 +98,7 @@ const DEFS = [
   { id: "peli.vineta", grupo: "Película · capa", etiqueta: "Bordes oscuros", valor: 0.1, min: 0, max: 1, paso: 0.05 },
   { id: "peli.respiracion", grupo: "Película · capa", etiqueta: "Los bordes respiran", valor: 0, min: 0, max: 1, paso: 0.05 },
   { id: "peli.granoOscuro", grupo: "Película · capa", etiqueta: "Grano en conversaciones y papeles (multiplicador del grano de arriba)", valor: 0.5, min: 0, max: 1.5, paso: 0.05 },
+  { id: "audio.musica", grupo: "Sonido", etiqueta: "Volumen de la música", valor: 0.5, min: 0, max: 1, paso: 0.05 },
   { id: "peli.comodidad", grupo: "Película · capa", etiqueta: "Comodidad: cuánto se mueve la imagen (1 normal · 0 quieta)", valor: 1, min: 0, max: 1, paso: 0.05 },
   { id: "peli.balanceo", grupo: "Película · capa", etiqueta: "Temblor del proyector", valor: 0, min: 0, max: 3, paso: 0.1, unidad: "px" },
 

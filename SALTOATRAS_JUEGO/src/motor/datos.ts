@@ -36,6 +36,8 @@ export interface Lugar {
   nombre: string;
   fondo?: string;
   al_llegar?: string;
+  /** Pista de SALTOATRAS_ARTE/sonido que suena aquí (si no, la de `musica.juego` de juego.yaml). */
+  musica?: string;
   cosas: Cosa[];
   vida?: VidaZona[];
 }
@@ -90,6 +92,8 @@ export interface Datos {
   ambientes: Record<string, Ambiente>;
   /** La entrada de una partida nueva: un texto en negro y, si hay, un sonido. */
   llegada?: { texto?: string; sonido?: string };
+  /** Pistas de música: la de la portada y la de por defecto durante el juego. */
+  musica?: { portada?: string; juego?: string };
   lugares: Record<string, Lugar>;
   fichas: Record<string, Ficha>;
   posits: Record<string, Posit>;
@@ -125,7 +129,7 @@ const pngs = import.meta.glob("../../../SALTOATRAS_ARTE/juego/**/*.png", {
   query: "?url", import: "default", eager: true,
 }) as Record<string, string>;
 
-const audios = import.meta.glob("../../../SALTOATRAS_ARTE/sonido/*.{mp3,ogg,wav}", {
+const audios = import.meta.glob("../../../SALTOATRAS_ARTE/sonido/**/*.{mp3,ogg,wav}", {
   query: "?url", import: "default", eager: true,
 }) as Record<string, string>;
 
@@ -153,7 +157,7 @@ export function cargarDatos(): Datos {
   };
 
   const juego = leer<{
-    inicio: string; titulo?: string; aviso?: string; llegada?: Datos["llegada"]; voces?: string[]; protagonista?: string; ambientes?: Record<string, Ambiente>;
+    inicio: string; titulo?: string; aviso?: string; llegada?: Datos["llegada"]; musica?: Datos["musica"]; voces?: string[]; protagonista?: string; ambientes?: Record<string, Ambiente>;
   }>("juego.yaml");
   if (!juego.voces?.length) errores.push("juego.yaml: falta la lista de voces (quién puede hablar)");
 
@@ -214,7 +218,7 @@ export function cargarDatos(): Datos {
   const sonidos: Record<string, string> = {};
   for (const [ruta, url] of Object.entries(audios)) sonidos[nombreDe(ruta)] = url;
 
-  return { inicio: juego.inicio, titulo: juego.titulo ?? "", aviso: (juego.aviso ?? "").trim(), llegada: juego.llegada,
+  return { inicio: juego.inicio, titulo: juego.titulo ?? "", aviso: (juego.aviso ?? "").trim(), llegada: juego.llegada, musica: juego.musica,
     voces: [...new Set([...(juego.voces ?? []), ...(juego.protagonista ? [juego.protagonista] : [])])],
     protagonista: juego.protagonista ?? "", ambientes: juego.ambientes ?? {}, lugares, fichas, posits, historia, imagenes, sonidos, rutas: new Set(rutas), errores };
 }

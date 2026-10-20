@@ -15,6 +15,13 @@ const MOVIMIENTOS = [
   { nombre: "Quieto", valor: 0 },
 ];
 
+/** Volumen de la música: tres escalones. */
+const MUSICA = [
+  { nombre: "Normal", valor: 0.5 },
+  { nombre: "Baja", valor: 0.2 },
+  { nombre: "Apagada", valor: 0 },
+];
+
 export class Pausa extends Phaser.Scene {
   private menu?: Phaser.GameObjects.Container;
   private congeladas: Phaser.Scene[] = [];
@@ -40,6 +47,7 @@ export class Pausa extends Phaser.Scene {
     const lista = [
       { texto: "Seguir", accion: () => this.seguir() },
       { texto: `Movimiento de la imagen: ${this.movimiento().nombre}`, accion: () => this.cambiarMovimiento() },
+      { texto: `Música: ${this.volumenMusica().nombre}`, accion: () => this.cambiarMusica() },
       { texto: "Nueva partida", accion: () => this.confirmar() },
       { texto: "Volver a la portada", accion: () => irAPortada(this) },
     ];
@@ -51,6 +59,17 @@ export class Pausa extends Phaser.Scene {
   private movimiento() {
     const v = valorDe("peli.comodidad");
     return MOVIMIENTOS.reduce((a, b) => (Math.abs(b.valor - v) < Math.abs(a.valor - v) ? b : a));
+  }
+
+  private volumenMusica() {
+    const v = valorDe("audio.musica");
+    return MUSICA.reduce((a, b) => (Math.abs(b.valor - v) < Math.abs(a.valor - v) ? b : a));
+  }
+
+  private cambiarMusica() {
+    const i = MUSICA.indexOf(this.volumenMusica());
+    poner("audio.musica", MUSICA[(i + 1) % MUSICA.length].valor);
+    this.principal();
   }
 
   private cambiarMovimiento() {

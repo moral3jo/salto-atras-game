@@ -2,6 +2,12 @@
 // En el juego las ejecuta el motor; en Inky se usa la versión de aquí abajo,
 // que solo lo enseña entre corchetes para poder probar sin el juego.
 
+// Cambia la música (un fichero de SALTOATRAS_ARTE/sonido, sin extensión); "" la calla.
+// musica("marea-baja")
+EXTERNAL musica(pista)
+=== function musica(pista)
+[música: {pista}]
+
 // Mientras sea cierta, no se puede acabar la conversación (ni "Adiós" ni Escape):
 // para los tutoriales que obligan a seguir hablando. ~ retener = true
 VAR retener = false

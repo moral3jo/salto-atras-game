@@ -7,6 +7,7 @@ import { ALTO, ANCHO, COLOR, camara, texto } from "../config";
 import { partida } from "../juego";
 import { ajuste } from "../motor/ajustes";
 import { DURACION, aparecer } from "../ui/animar";
+import { musica } from "../motor/musica";
 
 const PARTES: { id: string; nombre: string; escena?: string }[] = [
   { id: "expediente", nombre: "Expediente", escena: "expediente" },
@@ -62,6 +63,8 @@ export class Interfaz extends Phaser.Scene {
     const alAviso = (texto: string) => this.avisar(texto);
     const alGuiar = () => this.time.delayedCall(DURACION.lenta, () => this.guiar());
     ev.on("guia", alGuiar);
+    const alMusica = (pista: string) => musica(this, pista);
+    ev.on("musica", alMusica);
     ev.on("activar", alActivar);
     ev.on("ficha", alFicha);
     ev.on("posit", alPosit);
@@ -73,6 +76,7 @@ export class Interfaz extends Phaser.Scene {
       ev.off("posit", alPosit);
       ev.off("resuelta", alResolver);
       ev.off("aviso", alAviso);
+      ev.off("musica", alMusica);
       ev.off("guia", alGuiar);
     });
   }
