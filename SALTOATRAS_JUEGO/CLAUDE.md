@@ -61,7 +61,7 @@ Ningún texto ni nombre de la historia va en `src/`.
 - **Resolución**: todo se coloca en 960×540 y el lienzo es de 1920×1080 con la
   cámara a zoom 2 (`camara()` en `config.ts`), para que el texto salga nítido.
   Crear texto siempre con `texto()`.
-- El arte sale de `../SALTOATRAS_ARTE/normalizado/` (ver su `LEEME.md`). Sin
+- El arte sale de `../SALTOATRAS_ARTE/juego/` (ver su `LEEME.md`). Sin
   imagen, se dibuja un fondo provisional.
 - En desarrollo, `window.partida` y `window.juego` sirven para mirar el estado.
 

@@ -29,7 +29,7 @@ por uno**: lo tocas en vivo, y cuando te gusta, copias y me lo pegas.
 Para probar el arte. Arriba, **elegir el estilo de las imágenes** (A Grabado, B Óleo,
 C Plano, D Acuarela, o Ninguno): cambia al instante el fondo y la persona de la
 escena que estés viendo. Las imágenes son `<nombre>-<letra>-<estilo>.png` en
-`SALTOATRAS_ARTE/normalizado/` (`src/motor/estilo.ts`); sin sufijo se usa la de
+`SALTOATRAS_ARTE/juego/` (`src/motor/estilo.ts`); sin sufijo se usa la de
 siempre. Debajo, **botones de partida** de filtros (cada uno los pone todos de
 golpe) y los **deslizadores** (`estilo.*` en `ajustes.ts`): saturación, contraste,
 desenfoque, paleta (rampas de 4 tonos) con tramado, reducir colores, píxel grande,

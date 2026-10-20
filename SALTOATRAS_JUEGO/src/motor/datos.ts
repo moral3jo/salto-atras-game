@@ -49,7 +49,7 @@ export interface Ficha {
   tipo: Tipo;
   titulo: string;
   texto: string;
-  /** Dibujo de la ficha (SALTOATRAS_ARTE/normalizado/<icono>.png). */
+  /** Dibujo de la ficha (SALTOATRAS_ARTE/juego/<icono>.png). */
   icono?: string;
   /** Solo personas: cuerpo grande en la conversación; las poses son <cuerpo>-<pose>.png. */
   cuerpo?: string;
@@ -92,7 +92,7 @@ export interface Datos {
   fichas: Record<string, Ficha>;
   posits: Record<string, Posit>;
   historia: Story;
-  /** Nombre de imagen → URL, de SALTOATRAS_ARTE/normalizado. */
+  /** Nombre de imagen → URL, de SALTOATRAS_ARTE/juego. */
   imagenes: Record<string, string>;
   /** Nombre de sonido → URL, de SALTOATRAS_ARTE/sonido. */
   sonidos: Record<string, string>;
@@ -119,7 +119,7 @@ const inks = import.meta.glob("../../datos/historia/**/*.ink", {
   query: "?raw", import: "default", eager: true,
 }) as Record<string, string>;
 
-const pngs = import.meta.glob("../../../SALTOATRAS_ARTE/normalizado/*.png", {
+const pngs = import.meta.glob("../../../SALTOATRAS_ARTE/juego/*.png", {
   query: "?url", import: "default", eager: true,
 }) as Record<string, string>;
 

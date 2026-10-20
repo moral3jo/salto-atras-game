@@ -45,7 +45,7 @@ persona.
 multa:
   tipo: cosa              # persona | sitio | cosa | evento
   titulo: La multa
-  icono: multa            # opcional: SALTOATRAS_ARTE/normalizado/multa.png
+  icono: multa            # opcional: SALTOATRAS_ARTE/juego/multa.png
   panel: true             # opcional: va clavada en el panel al conseguirla
   texto: |
     Boletín de denuncia. Policía Local de Medina.
@@ -104,7 +104,7 @@ El nombre del fichero es el id del lugar (`ir("bosque_entrada")`).
 
 ```yaml
 nombre: Plaza                 # sale si no hay fondo
-fondo: plaza                  # SALTOATRAS_ARTE/normalizado/plaza.png (si no está, uno provisional)
+fondo: plaza                  # SALTOATRAS_ARTE/juego/plaza.png (si no está, uno provisional)
 al_llegar: plaza_llegar       # nudo de Ink al entrar (opcional)
 
 cosas:

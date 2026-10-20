@@ -2,12 +2,12 @@
 # de conversación (pinchar una es preguntar por ella). Ver docs/FORMATO.md.
 #
 #   tipo: persona | sitio | cosa | evento
-#   icono: dibujo de la ficha (SALTOATRAS_ARTE/normalizado/<icono>.png)
+#   icono: dibujo de la ficha (SALTOATRAS_ARTE/juego/<icono>.png)
 #   cuerpo: solo personas; cuerpo grande al hablar (<cuerpo>-<pose>.png)
 #   panel: true si va clavada en el panel (la pared) al conseguirla
 #   de_cerca: cómo se ve de cerca con ~ ver("id") en Ink
 #     texto: lo que pone el papel
-#     imagen: el papel (SALTOATRAS_ARTE/normalizado/<imagen>.png); si no, uno dibujado
+#     imagen: el papel (SALTOATRAS_ARTE/juego/<imagen>.png); si no, uno dibujado
 #     letra: mano (por defecto) | maquina
 #       Lo que va entre [[ ]] sale a mano (un impreso relleno a bolígrafo).
 #

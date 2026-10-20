@@ -16,7 +16,7 @@ const PARTES: { id: string; nombre: string; escena?: string }[] = [
   { id: "mapa", nombre: "Mapa" },
 ];
 
-/** El dedo que señala (SALTOATRAS_ARTE/normalizado), apuntando a la derecha. */
+/** El dedo que señala (SALTOATRAS_ARTE/juego), apuntando a la derecha. */
 const DEDO = "ui-flechas-1";
 
 /** Si alguna de estas está abierta, Escape es suyo (cierra eso), no abre la pausa. */
